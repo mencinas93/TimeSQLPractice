@@ -1,0 +1,29 @@
+DROP TABLE if exists  t_date;
+
+Create Table t_date(
+a timestamp, b time , c date , d interval );
+
+insert into t_date values('2023-06-28 10:15:12' , '10:15:00' , '2023-06-28' , '1 day');
+insert into t_date values('1990-06-28 10:15:12' , '10:15:00' , '2023-06-28' , '1 hour');
+insert into t_date values('1800-06-28 10:15:12' , '10:15:00' , '2023-06-28' , '100 hours');
+insert into t_date values('1700-06-28 10:15:12' , '10:15:00' , '2023-06-28' , '100 minute');
+insert into t_date values('1600-06-28 10:15:12' , '10:15:00' , '2023-06-28' , '100 second');
+insert into t_date values('0001-06-28 10:15:12' , '10:15:10.10' , '2023-06-28' , '100 millisecond');
+
+-- how to use interval data type
+select c + d from t_date
+
+select justify_hours(d) from T_date
+
+select DATE_PART('YEAR', a) , DATE_PART('Month', a) , DATE_PART('DAY', a) from t_date
+
+-- Time stamp do not have Year
+select DATE_PART('YEAR', b)  from t_date
+
+
+select DATE_PART('HOUR', b) ,DATE_PART('Minute', b), DATE_PART('Second', b) , DATE_PART('millisecond', b)  from t_date
+
+
+SELECT EXTRACT(CENTURY FROM a) from t_date;
+
+SELECT AGE(a) from t_date;
